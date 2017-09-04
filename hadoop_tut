@@ -1,0 +1,47 @@
+-hadoop jar <jar_path> <Main_class_name> <input_file_path> <output_file_path>
+
+
+hadoop jar /home/prashant/IdeaProjects/HadoopFirstProject/out/artifacts/1_0_jar/1.0.jar WordCountMain /user/prashant/wordcounttext /user/prashant/out
+
+
+hadoop jar /home/prashant/IdeaProjects/HadoopFirstProject/out/artifacts/1_0_jar/1.0.jar landslide.CountryWiseLandslideCountMain /user/prashant/bigdata_input_csv/bigdata_input_data/Global_Landslide_Catalog_Export.csv /user/prashant/bigdata_output_data
+
+----Hadoop Processes Start Order----------
+1) Yarn daemon
+2) Resource Manager
+3) Node Manager
+4) Name Node
+5) Data Node
+6) Sec. Name Node
+
+
+------------ Important Points ----------------
+1) WritableComparable - For any class to be a Key it should implement this interface.
+
+2) Writable - It is any serializable onject which implements simple, efficient, serialization protocol based on DataInput and DataOutput. For any class to be a  Value in Hadoop, it must implement this interface.
+
+3) DataOutput - This interface provides a way to convert any Java primitive types to a series of bytes and also helps to write them on byte stream.
+
+
+IntWritable implements WritableComparable
+
+WritableComparable extends Writable Interface
+
+Methods in Writable interface passes Dataoutput type args.
+
+
+4) MR has defined a way to define Key and Values type so that they can move across clusters in network.(To help serialization)
+Values -> Writable
+Keys -> WritableComparable
+
+5) Type for String is Text, for int is IntWritable etc.
+6) NullWritaable is used as placeholder where K and Value is not needed.
+
+7) InputFormat - It is responsible for creating input splits and dividing them into Records.
+
+8) Split v/s Block
+Split gives logical record boundary
+Block is physical bondary
+
+9) Partitioner - Partitioner class defines which partition the K,V pair should go after map function using hash vlaue.
+
